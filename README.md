@@ -20,9 +20,9 @@ N.B. Ensure the length of the password you want to validate is at least 10-chara
 
 In your TS/JS application:
 
-const passwordCheck = require('secure-password-utility');
 
 ````
+const passwordCheck = require('secure-password-utility');
 function SampleCall () {
     if(passwordCheck.WeakPasswordChecker('retziwChanabd2?',15)) {
         console.log("secure password");
