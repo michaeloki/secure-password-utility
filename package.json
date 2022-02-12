@@ -2,7 +2,7 @@
   "name": "secure-password-utility",
   "version": "1.0.1",
   "description": "This password utility encourages the use of strong passwords in front-end applications",
-  "main": "main.ts",
+  "main": "src/main.ts",
   "scripts": {
     "test": "mocha -r ts-node/register tests/**/*.test.ts",
     "coverage": "nyc -r lcov -e .ts -x \"*.test.ts\" npm run test"
