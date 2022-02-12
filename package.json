@@ -1,6 +1,6 @@
 {
   "name": "secure-password-utility",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "This password utility encourages the use of strong passwords in front-end applications",
   "main": "src/main.ts",
   "scripts": {

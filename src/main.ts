@@ -11,7 +11,6 @@ function WeakPasswordChecker(rawPassword, passwordLength) {
                 if (!(passwordLength === rawPassword.length && passwordLength >= 10)) {
                     return !status;
                 } else {
-                    console.log('allConstants is ',allConstants.getCommonWords());
                     allConstants.getCommonWords().forEach((word) => {
                         if (rawPassword.includes(word)) {
                             status = false;
