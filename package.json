@@ -19,6 +19,7 @@
     "secure password"
   ],
   "author": "Michael Oki @inspiratiX Hub",
+  "blog": "https://michaeloki.blogspot.com",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/michaeloki/secure-password-utility/issues"
