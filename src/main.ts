@@ -1,6 +1,6 @@
 const allConstants = require('./constants');
 
-function WeakPasswordChecker(rawPassword: String, passwordLength: Number): boolean {
+function WeakPasswordChecker(rawPassword, passwordLength) {
     let status = true;
 
     try {
