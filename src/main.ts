@@ -1,38 +1,37 @@
-
 const allConstants = require('./constants');
 
-    export function WeakPasswordChecker (rawPassword: String, passwordLength: Number): boolean {
-        let status = true;
+function WeakPasswordChecker(rawPassword: String, passwordLength: Number): boolean {
+    let status = true;
 
-        try {
-            if (!rawPassword || !passwordLength) {
-                return !status;
-            } else {
-                try {
-                    if (!(passwordLength === rawPassword.length && passwordLength >= 10)) {
-                        return !status;
-                    } else {
-                        allConstants.commonWords.forEach((word: string) => {
-                            if (rawPassword.includes(word)) {
-                                status = false;
-                            }
-                        });
-
-                        if (status) {
-                            // check if it contains special characters, digit, small and capital letters
-                            const regExp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
-                            if (!rawPassword.match(regExp)) {
-                                status = false;
-                            }
+    try {
+        if (!rawPassword || !passwordLength) {
+            return !status;
+        } else {
+            try {
+                if (!(passwordLength === rawPassword.length && passwordLength >= 10)) {
+                    return !status;
+                } else {
+                    allConstants.commonWords.forEach((word: string) => {
+                        if (rawPassword.includes(word)) {
+                            status = false;
                         }
-                        return status;
+                    });
+
+                    if (status) {
+                        // check if it contains special characters, digit, small and capital letters
+                        const regExp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+                        if (!rawPassword.match(regExp)) {
+                            status = false;
+                        }
                     }
-                } catch (e) {
-                    console.log("SecurePasswordUtility::: ", e.message);
+                    return status;
                 }
+            } catch (e) {
+                console.log("SecurePasswordUtility::: ", e.message);
             }
-        } catch (e) {
-            console.log("SecurePasswordUtility::: ", e.message);
-            return status;
         }
+    } catch (e) {
+        console.log("SecurePasswordUtility::: ", e.message);
+        return status;
     }
+}
