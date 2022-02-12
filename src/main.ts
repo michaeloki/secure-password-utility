@@ -1,8 +1,7 @@
 
 const allConstants = require('./constants');
 
-module.exports = {
-    WeakPasswordChecker: function (rawPassword: String, passwordLength: Number): boolean {
+    export function WeakPasswordChecker (rawPassword: String, passwordLength: Number): boolean {
         let status = true;
 
         try {
@@ -36,5 +35,4 @@ module.exports = {
             console.log("SecurePasswordUtility::: ", e.message);
             return status;
         }
-    },
-}
+    }

@@ -5,10 +5,12 @@ To install this package, run npm i secure-password-utility
 
 Usage
 =====
+Syntax: passwordCheck('yourSamplePassword',lengthOfPasswordString);
+N.B. Ensure the length of the password you want to validate is at least 10-characters long.
 
 In your TS/JS application:
 
-const passwordCheck = require('WeakPasswordCheck');
+const passwordCheck = require('secure-password-utility');
 
 function SampleCall () {
     if(passwordCheck('retziwChanabd2?',15)) {
@@ -17,6 +19,3 @@ function SampleCall () {
         console.log("weak password);
     }
 }
-
-N.B. Ensure the length of the password you want to validate is at least 10-characters long.
-
