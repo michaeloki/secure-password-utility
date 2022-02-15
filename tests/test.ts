@@ -1,4 +1,4 @@
-import {expect} from "chai";
+import {assert, expect} from "chai";
 
 let passwordLength = 13;
 let rawPassword = "Turpen73tino!";
@@ -10,9 +10,16 @@ describe('StringChecker', function () {
     });
 });
 
-describe('weakPasswordChecker', function () {
+describe('WeakPasswordChecker', function () {
     it('compare', function () {
         let result = rawPassword.length == passwordLength;
         expect(result).equal(true);
+    });
+});
+
+describe('CreateStrongPassword', function () {
+    it('compare', function () {
+        let result = rawPassword.length == passwordLength;
+        assert.ok(typeof result,"string");
     });
 });
