@@ -55,7 +55,6 @@ module.exports = {
         }
         if ((parseInt(passwordLength) % 4 !== 0)) {
             remainder = parseInt(passwordLength) % 4;
-            console.log("remainder of " + passwordLength + " is " + remainder);
             uCaseLength = (passwordLength - remainder) / 4;
             lCaseLength = (passwordLength - remainder) / 4;
             nCaseLength = (passwordLength - remainder) / 4;
