@@ -14,7 +14,11 @@ module.exports = {
             "palace", "cardiff", "leicester", "gerrard",
             "fulham", "messi", "salah", "ronaldo",
             "mbappe", "london", "newyork", "tokyo",
-            "africa", "europe", "asia", "america"
+            "africa", "europe", "asia", "america",
+            "love", "baby", "dog", "angel",
+            "sam", "anna", "cat", "alex",
+            "leo", "apple", "ford", "honda",
+            "audi", "scorpio", "gemini"
         ];
     }
 }

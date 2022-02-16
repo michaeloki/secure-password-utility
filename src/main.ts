@@ -13,7 +13,7 @@ module.exports = {
                         return !status;
                     } else {
                         allConstants.getCommonWords().forEach((word) => {
-                            if (rawPassword.includes(word)) {
+                            if (rawPassword.toString().toLowerCase().includes(word)) {
                                 status = false;
                             }
                         });
