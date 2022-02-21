@@ -121,4 +121,16 @@ module.exports = {
         }
         return createNewPassword;
     },
+    ProductKeyGenerator: function (productKeyLength) {
+        let generatedProductKey = "";
+        if(!productKeyLength.isNaN && (productKeyLength===16 || productKeyLength===20 || productKeyLength===25)) {
+            const upperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456890';
+            const keyLength = upperCase.length;
+            for (let i = 0; i < keyLength; i++) {
+                generatedProductKey += upperCase.charAt(Math.floor(Math.random() *
+                    upperCase.length));
+            }
+        }
+        return generatedProductKey;
+    },
 }
