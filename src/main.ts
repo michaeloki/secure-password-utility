@@ -123,14 +123,33 @@ module.exports = {
     },
     ProductKeyGenerator: function (productKeyLength) {
         let generatedProductKey = "";
-        if(!productKeyLength.isNaN && (productKeyLength===16 || productKeyLength===20 || productKeyLength===25)) {
+        let finalGeneratedProductKey = "";
+        let modulusSum = 0;
+        if (!productKeyLength.isNaN && productKeyLength >= 16 && productKeyLength <= 100
+            && (productKeyLength % 4 === 0 || productKeyLength % 5 === 0)) {
             const upperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456890';
-            const keyLength = upperCase.length;
-            for (let i = 0; i < keyLength; i++) {
+            for (let i = 0; i < productKeyLength; i++) {
                 generatedProductKey += upperCase.charAt(Math.floor(Math.random() *
                     upperCase.length));
             }
+            if ((productKeyLength % 5 === 0 && productKeyLength % 4 === 0) || productKeyLength % 5 === 0) {
+                for (let k = 0; k < productKeyLength; k++) {
+                    modulusSum = k + 1;
+                    if (modulusSum % 5 === 0) {
+                        finalGeneratedProductKey += generatedProductKey.substring(k - 4, k + 1) + "-";
+                    }
+                }
+            }
+            if (productKeyLength % 4 === 0 && productKeyLength % 5 !== 0) {
+                for (let l = 0; l < productKeyLength; l++) {
+                    modulusSum = l + 1;
+                    if (modulusSum % 4 === 0) {
+                        finalGeneratedProductKey += generatedProductKey.substring(l - 3, l + 1) + "-";
+                    }
+                }
+            }
         }
-        return generatedProductKey;
+        finalGeneratedProductKey = finalGeneratedProductKey.substring(0, finalGeneratedProductKey.length - 1);
+        return finalGeneratedProductKey;
     },
 }
