@@ -17,8 +17,8 @@ module.exports = {
             "africa", "europe", "asia", "america",
             "love", "baby", "dog", "angel",
             "sam", "anna", "cat", "alex",
-            "leo", "apple", "ford", "honda",
-            "audi", "scorpio", "gemini"
+            "leo", "apple", "ford", "honda", "news",
+            "audi", "scorpio", "gemini", "haaland", "chatgpt", "sudan"
         ];
     },
     getPasswordLength: function () { return 13 },
