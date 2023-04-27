@@ -1,39 +1,31 @@
 import {assert, expect} from "chai";
+const getTestVariables = require('../src/constants.ts');
 
-let passwordLength = 13;
-let rawPassword = "Turpen73tino!";
-let productKeyLengthA = 16;
-let productKeyLengthB = 20;
 
-describe('StringChecker', function () {
+describe('String Length Checker', function () {
     it('confirm', function () {
-        expect(passwordLength >= 10).equal(true);
-        expect(typeof rawPassword).equal("string");
+        expect(getTestVariables.getPasswordLength() >= 10).true
+        expect(typeof getTestVariables.getRawPassword()).equal("string");
     });
 });
 
 describe('WeakPasswordChecker', function () {
     it('compare', function () {
-        let result = rawPassword.length == passwordLength;
+        let result = getTestVariables.getRawPassword().length == getTestVariables.getPasswordLength();
         expect(result).equal(true);
     });
 });
 
 describe('CreateStrongPassword', function () {
     it('compare', function () {
-        let result = rawPassword.length == passwordLength;
+        let result = getTestVariables.getRawPassword().length == getTestVariables.getPasswordLength();
         assert.ok(typeof result,"string");
     });
 });
 
 describe('ProductKeyGenerator', function () {
     it('compare', function () {
-        let inputA = productKeyLengthA%4;
-        let inputB = productKeyLengthB%5;
-        // expect(result).equal(true);
-
-        expect( (inputA || inputB)).equal( 0);
-            //.equal(true);
-        expect(productKeyLengthA >= 16).equal(true);
+        expect( (getTestVariables.getFirstProductKey()%4 || getTestVariables.getSecondProductKey()%5)).equal( 0);
+        expect(getTestVariables.getFirstProductKey() >= 16).equal(true);
     });
 });

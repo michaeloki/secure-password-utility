@@ -1,5 +1,5 @@
 module.exports = {
-    getCommonWords: function () {
+    getCommonWords: () => {
         return [
             "pass", "123", "abc", "power",
             "qwerty", "000", "1q2w3e", "ashley",
@@ -20,7 +20,17 @@ module.exports = {
             "leo", "apple", "ford", "honda",
             "audi", "scorpio", "gemini"
         ];
-    }
+    },
+    getPasswordLength: function () { return 13 },
+    getRawPassword: () => {
+        return "Turpen73tino!"
+    },
+    getFirstProductKey: () => {
+        return 16;
+    },
+    getSecondProductKey: () => {
+        return 20;
+    },
 }
 
 
