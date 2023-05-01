@@ -31,6 +31,21 @@ module.exports = {
     getSecondProductKey: () => {
         return 20;
     },
+    getLowerCase: () => {
+        return 'abcdefghijklmnopqrstuvwxyz';
+    },
+    getUpperCase: () => {
+        return 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    },
+    getRandomString: () => {
+        return 'abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    },
+    getAllNumbers: () => {
+        return '0123456789';
+    },
+    getSpecialChars: () => {
+        return '#$!@&%+=?';
+    },
 }
 
 
