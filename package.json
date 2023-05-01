@@ -1,6 +1,6 @@
 {
   "name": "secure-password-utility",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "This password utility encourages the use of strong passwords in front-end applications",
   "main": "src/main.ts",
   "scripts": {
@@ -22,6 +22,7 @@
   "author": "Michael Oki @inspiratiX Hub",
   "blog": "https://michaeloki.blogspot.com",
   "license": "ISC",
+  "social": "https://www.linkedin.com/in/michael-oki-a15ba317",
   "bugs": {
     "url": "https://github.com/michaeloki/secure-password-utility/issues"
   },
