@@ -9,7 +9,7 @@ module.exports = {
                 return !status;
             } else {
                 try {
-                    if (!(passwordLength === rawPassword.length && passwordLength >= 10)) {
+                    if (!(passwordLength === rawPassword.length && passwordLength >= 12)) {
                         return !status;
                     } else {
                         allConstants.getCommonWords().forEach((word) => {

@@ -7,7 +7,7 @@ When you call WeakPasswordChecker you will get a boolean value.
 
 Weak passwords like password123 or common words will also return false.
 
-The WeakPasswordChecker function will validate your input by ensuring that the password length is more than 9.
+The WeakPasswordChecker function will validate your input by ensuring that the password length is more than 11.
 It also confirms that the input contains a number and the combination of a special character,lowercase and uppercase.
 
 Once you display the conditions in your UI, this function will enforce the validation.
@@ -18,7 +18,7 @@ Usage
 =====
 // Validate password strength
 Syntax: securePasswordUtility.WeakPasswordChecker('yourSamplePassword',lengthOfPasswordString);
-N.B. Ensure the length of the password you want to validate is at least 10-characters long.
+N.B. Ensure the length of the password you want to validate is at least 12-characters long.
 
 // Generate a strong password
 Syntax: securePasswordUtility.CreateStrongPassword(lengthOfPasswordString);

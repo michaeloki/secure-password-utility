@@ -4,7 +4,7 @@ const getTestVariables = require('../src/constants.ts');
 
 describe('String Length Checker', function () {
     it('confirm', function () {
-        expect(getTestVariables.getPasswordLength() >= 10).true
+        expect(getTestVariables.getPasswordLength() >= 12).true
         expect(typeof getTestVariables.getRawPassword()).equal("string");
     });
 });
