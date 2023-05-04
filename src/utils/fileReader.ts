@@ -18,7 +18,6 @@ export class SecureFileReader {
                  const obj = JSON.parse(data.toString());
                  for (const text in obj) {
                      if (rawPassword.toLowerCase().includes(obj[text]) && obj[text].toString().toLowerCase().length >= 3) {
-                         //messageService.sendMessage(true)
                          //return true;
                          tempState = true;
                          // console.log('tempState ', tempState);
@@ -39,10 +38,7 @@ export class SecureFileReader {
         } catch (error:any) {
             console.log(`SecurePasswordUtility::: Got an error trying to read the file: ${error.message}`);
         }
-
          console.log('i gotttt ', tempState);
-        // if(messageService.getMessage() === true) {}
-         //messageService.clearMessage();
         return tempState;
     }
 }
