@@ -19,7 +19,7 @@ export class SecurePasswordUtility {
                         await fetch(this.allConstants.remotePassFile)
                             .then((response) => response.json())
                             .then(
-                                (json) => json.forEach(( word) => {
+                                (json) => json.forEach((word:string) => {
                                             if (rawPassword.toLowerCase().includes(word) && word.toString().toLowerCase().length >= 3) {
                                                 fileResult.add(true);
                                             }
