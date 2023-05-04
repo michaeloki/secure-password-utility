@@ -30,11 +30,14 @@
   "devDependencies": {
     "@types/chai": "^4.3.0",
     "@types/mocha": "^9.1.0",
-    "@types/node": "^17.0.17",
+    "@types/node": "^17.0.45",
     "chai": "^4.3.6",
     "mocha": "10.1.0",
     "nyc": "^15.1.0",
     "ts-node": "^10.5.0",
     "typescript": "^4.5.5"
+  },
+  "dependencies": {
+    "rxjs": "^7.8.1"
   }
 }

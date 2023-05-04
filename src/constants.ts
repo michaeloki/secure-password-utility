@@ -1,4 +1,5 @@
 export class AppConstants {
+
     getPasswordLength() {
         return 13
     }
@@ -33,5 +34,9 @@ export class AppConstants {
 
     getSpecialChars() {
         return '#$!@&%+=?';
+    }
+
+    getPasswordState() {
+        return true;
     }
 }
