@@ -6,13 +6,13 @@ export class SecureFileReader {
         try {
             const data = await fs.readFile('src/assets/passwds.json');
             const obj = JSON.parse(data);
-            obj.forEach((e => {
-                if(rawPassword.toLowerCase().includes(e) && e.length>=3) {
+            obj.forEach((text=> {
+                if(rawPassword.toLowerCase().includes(text) && text.length>=3) {
                     passwordResponse = true;
                 }
             }));
-        } catch (error) {
-            console.error(`SecurePasswordUtility::: Got an error trying to read the file: ${error.message}`);
+        } catch (error:any) {
+            console.log(`SecurePasswordUtility::: Got an error trying to read the file: ${error.message}`);
         }
         console.log('final rep is ',passwordResponse);
         return passwordResponse;
