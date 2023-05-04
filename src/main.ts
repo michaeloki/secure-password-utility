@@ -30,7 +30,6 @@ export class SecurePasswordUtility {
                                     if (!pattern.test(rawPassword)) {
                                         status = false;
                                         fileResult.add(true);
-                                        console.log('pass makeup is poor')
                                     }
                                 }
                     }
