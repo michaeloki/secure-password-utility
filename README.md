@@ -12,8 +12,16 @@ It also confirms that the input contains a number and the combination of a speci
 
 Once you display the conditions in your UI, this function will enforce the validation.
 
+# Quick Setup
+Install the plugin using npm i secure-password-utility
+In your Angular/React/Vue application:
+Install 'Types' plugin by running npm i -D @types/node
+Add
+"types": [
+"node"
+],
 
-
+in your tsconfig.json file and restart your IDE.
 Usage
 =====
 // Validate password strength
@@ -28,17 +36,15 @@ N.B. The password length must be more than 12.
 Syntax: securePasswordUtility.CreateStrongPassword(lengthOfPasswordString);
 N.B. The password length must be a multiple of 4 or 5 between 16 and 100 e.g. 16 or 25
 
-In your TS/JS application:
-Import secure-password-utility
+
 ````
 const securePasswordUtility = require('secure-password-utility'); // Add this in your top-level class or file
-import {SecurePasswordUtility} from 'secure-password-utility'
 
 ````
 
 ````
 function SampleCall () {
-    if(securePasswordUtility.weakPasswordChecker('retziwChanabd2?',15)) {
+    if(securePasswordUtility.weakPasswordChecker('k%&%N8Ey4$Yx$Fp$A8',18)) {
         console.log("secure password");
     } else {
         console.log("weak password");
