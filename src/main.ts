@@ -1,35 +1,53 @@
 const allConstants = require('./constants.ts');
+const fileReader = require('./utils/fileReader');
 
 module.exports = {
-    WeakPasswordChecker:  (rawPassword: string, passwordLength: number) => {
+    WeakPasswordChecker:  async (rawPassword: string, passwordLength: number) => {
         let status = true;
 
         try {
             if (!rawPassword || !passwordLength) {
-                return !status;
+                status = false;
+                //return !status;
             } else {
                 try {
                     if (!(passwordLength === rawPassword.length && passwordLength >= 12)) {
-                        return !status;
+                        //return !status;
+                        status = false;
                     } else {
-                        allConstants.getCommonWords().forEach((word) => {
-                            if (rawPassword.toString().toLowerCase().includes(word)) {
-                                status = false;
-                            }
-                        });
+                        // allConstants.getCommonWords().forEach((word) => {
+                        //     if (rawPassword.toString().toLowerCase().includes(word)) {
+                        //         status = false;
+                        //     }
+                        // });
+
+
+                        await fileReader.readFile(rawPassword.toString().toLowerCase())
+                            .then((result) => {
+                                // console.log('original result is ', result)
+                                result == true ? status = false : status = true;
+                                //status = result;
+                            })
+                        // console.log('status after reader is ', status);
+                        // if(inputReader) {
+                        //     status = false;
+                        // }
 
                         if (status) {
 
                             const pattern = new RegExp(
                                 "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[-+_!@#$%^&*.,?]).+$"
                             );
-                            if (pattern.test(rawPassword)) {
-                                return status;
-                            } else {
-                                return !status;
+                            // if (pattern.test(rawPassword)) {
+                            //     return status;
+                            // } else {
+                            //     return !status;
+                            // }
+                            if (!pattern.test(rawPassword)) {
+                                status = false;
                             }
                         }
-                        return status;
+                        //return status;
                     }
                 } catch (e) {
                     console.log("SecurePasswordUtility::: ", e.message);
@@ -37,8 +55,10 @@ module.exports = {
             }
         } catch (e) {
             console.log("SecurePasswordUtility::: ", e.message);
-            return status;
+            //return status;
         }
+        console.log('overall return is ', status);
+        return status;
     },
     StrongPasswordGenerator:  (passwordLength) => {
         let uCaseLength = 0;

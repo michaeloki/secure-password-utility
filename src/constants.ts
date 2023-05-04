@@ -21,7 +21,7 @@ module.exports = {
             "audi", "scorpio", "gemini", "haaland", "chatgpt", "sudan"
         ];
     },
-    getPasswordLength: function () { return 13 },
+    getPasswordLength: () => { return 13 },
     getRawPassword: () => {
         return "Turpen73tino!"
     },

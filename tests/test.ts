@@ -1,5 +1,6 @@
 import {assert, expect} from "chai";
 const getTestVariables = require('../src/constants.ts');
+const passwordChecker = require('../src/main');
 
 
 describe('String Length Checker', function () {
@@ -11,8 +12,12 @@ describe('String Length Checker', function () {
 
 describe('WeakPasswordChecker', function () {
     it('compare', function () {
-        let result = getTestVariables.getRawPassword().length == getTestVariables.getPasswordLength();
-        expect(result).equal(true);
+        let result = passwordChecker.WeakPasswordChecker('Ronaldo!@#41',12);
+        console.log('rrrr==== ',result);
+        expect(result.then((response) => response)).equal(true);
+
+        //let result = getTestVariables.getRawPassword().length == getTestVariables.getPasswordLength();
+        //expect(result).equal(true);
     });
 });
 
@@ -20,6 +25,7 @@ describe('CreateStrongPassword', function () {
     it('compare', function () {
         let result = getTestVariables.getRawPassword().length == getTestVariables.getPasswordLength();
         assert.ok(typeof result,"string");
+        //assert.isNotEmpty(passwordChecker.CreateStrongPassword(12))
     });
 });
 
