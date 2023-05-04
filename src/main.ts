@@ -20,7 +20,7 @@ export class SecurePasswordUtility {
                         status = false;
                     } else {
                          //let result = this.fileReader.readFile(rawPassword.toString().toLowerCase())
-                        await fs.readFile('src/assets/passwds.json', function (err, data) {
+                        await fs.readFile('src/assets/passwds.json', function (err:any, data:any) {
                             if (err) {
                                 return console.error(err);
                             }
@@ -39,7 +39,7 @@ export class SecurePasswordUtility {
                             console.log('size is ', fileResult.size);
 
 
-                            let newTempState;
+                            let newTempState:boolean;
                             try {
                                 console.log('TRYING TO CALLLLLL ', );
                                 //console.log('RESPONSE ', response);
