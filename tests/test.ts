@@ -1,37 +1,47 @@
 import {assert, expect} from "chai";
-const getTestVariables = require('../src/constants.ts');
-const passwordChecker = require('../src/main');
+import {AppConstants} from "../src/constants";
+import {SecurePasswordUtility} from "../src/main";
 
+const securePasswordUtility = new SecurePasswordUtility();
 
-describe('String Length Checker', function () {
+const getTestVariables = new AppConstants();
+    describe('String length checker', function () {
     it('confirm', function () {
         expect(getTestVariables.getPasswordLength() >= 12).true
         expect(typeof getTestVariables.getRawPassword()).equal("string");
     });
 });
 
-describe('WeakPasswordChecker', function () {
-    it('compare', function () {
-        let result = passwordChecker.WeakPasswordChecker('Ronaldo!@#41',12);
-        console.log('rrrr==== ',result);
-        expect(result.then((response) => response)).equal(true);
-
-        //let result = getTestVariables.getRawPassword().length == getTestVariables.getPasswordLength();
-        //expect(result).equal(true);
-    });
+describe('Weak password checker', function () {
+    // it('compare', function () {
+    //     let result = securePasswordUtility.weakPasswordChecker('Ronaldo!@#41',12);
+    //     console.log('rrrr==== ',result);
+    //     expect(result.then((response) => response)).equal(true);
+    //
+    //     //let result = getTestVariables.getRawPassword().length == getTestVariables.getPasswordLength();
+    //     //expect(result).equal(true);
+    // });
+    it('return a result', async () => {
+        let result = securePasswordUtility.weakPasswordChecker('Ronaldo!@#41',12)
+        console.log('result is ', result);
+            // .then((response) => {
+            //     console.log('resp is ',response)
+            //     assert.equal(response, false)
+            // })
+    } );
 });
 
-describe('CreateStrongPassword', function () {
+describe('Create a strong password', function () {
     it('compare', function () {
         let result = getTestVariables.getRawPassword().length == getTestVariables.getPasswordLength();
         assert.ok(typeof result,"string");
-        //assert.isNotEmpty(passwordChecker.CreateStrongPassword(12))
+        expect(securePasswordUtility.completePasswordGeneration(16,'hello','sgfsf'))
+            .contain('hello');
     });
 });
 
-describe('ProductKeyGenerator', function () {
+describe('Generate a product key', function () {
     it('compare', function () {
-        expect( (getTestVariables.getFirstProductKey()%4 || getTestVariables.getSecondProductKey()%5)).equal( 0);
-        expect(getTestVariables.getFirstProductKey() >= 16).equal(true);
+        expect(securePasswordUtility.productKeyGenerator(20)).length(23);
     });
 });

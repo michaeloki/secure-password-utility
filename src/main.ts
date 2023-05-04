@@ -1,53 +1,35 @@
-const allConstants = require('./constants.ts');
-const fileReader = require('./utils/fileReader');
+import {AppConstants} from "./constants";
+import {SecureFileReader} from "./utils/fileReader";
 
-module.exports = {
-    WeakPasswordChecker:  async (rawPassword: string, passwordLength: number) => {
+export class SecurePasswordUtility {
+     allConstants = new AppConstants();
+    fileReader = new SecureFileReader();
+
+    async weakPasswordChecker(rawPassword: string, passwordLength: number) {
         let status = true;
 
         try {
             if (!rawPassword || !passwordLength) {
                 status = false;
-                //return !status;
             } else {
                 try {
                     if (!(passwordLength === rawPassword.length && passwordLength >= 12)) {
-                        //return !status;
                         status = false;
                     } else {
-                        // allConstants.getCommonWords().forEach((word) => {
-                        //     if (rawPassword.toString().toLowerCase().includes(word)) {
-                        //         status = false;
-                        //     }
-                        // });
-
-
-                        await fileReader.readFile(rawPassword.toString().toLowerCase())
+                        await this.fileReader.readFile(rawPassword.toString().toLowerCase())
                             .then((result) => {
-                                // console.log('original result is ', result)
                                 result == true ? status = false : status = true;
-                                //status = result;
                             })
-                        // console.log('status after reader is ', status);
-                        // if(inputReader) {
-                        //     status = false;
-                        // }
+
 
                         if (status) {
 
-                            const pattern = new RegExp(
-                                "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[-+_!@#$%^&*.,?]).+$"
-                            );
-                            // if (pattern.test(rawPassword)) {
-                            //     return status;
-                            // } else {
-                            //     return !status;
-                            // }
+                            const pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[-+_!@#$%^&*.,?]).+$/;
+
                             if (!pattern.test(rawPassword)) {
                                 status = false;
                             }
                         }
-                        //return status;
                     }
                 } catch (e) {
                     console.log("SecurePasswordUtility::: ", e.message);
@@ -55,12 +37,12 @@ module.exports = {
             }
         } catch (e) {
             console.log("SecurePasswordUtility::: ", e.message);
-            //return status;
         }
         console.log('overall return is ', status);
         return status;
-    },
-    StrongPasswordGenerator:  (passwordLength) => {
+    }
+
+    strongPasswordGenerator(passwordLength) {
         let uCaseLength = 0;
         let lCaseLength = 0;
         let nCaseLength = 0;
@@ -88,62 +70,68 @@ module.exports = {
 
 
         for (let i = 0; i < uCaseLength; i++) {
-            upperCaseGenerator += allConstants.getUpperCase().charAt(Math.floor(Math.random() *
-                allConstants.getUpperCase().length));
+            upperCaseGenerator += this.allConstants.getUpperCase().charAt(Math.floor(Math.random() *
+                this.allConstants.getUpperCase().length));
         }
 
         for (let j = 0; j < lCaseLength; j++) {
-            lowerCaseGenerator += allConstants.getLowerCase().charAt(Math.floor(Math.random() *
-                allConstants.getLowerCase().length));
+            lowerCaseGenerator += this.allConstants.getLowerCase().charAt(Math.floor(Math.random() *
+                this.allConstants.getLowerCase().length));
         }
 
         for (let k = 0; k < nCaseLength; k++) {
-            numericGenerator += allConstants.getAllNumbers().charAt(Math.floor(Math.random() *
-                allConstants.getAllNumbers().length));
+            numericGenerator += this.allConstants.getAllNumbers().charAt(Math.floor(Math.random() *
+                this.allConstants.getAllNumbers().length));
         }
 
         for (let z = 0; z < cCaseLength; z++) {
-            characterGenerator += allConstants.getSpecialChars().charAt(Math.floor(Math.random() *
-                allConstants.getSpecialChars().length));
+            characterGenerator += this.allConstants.getSpecialChars().charAt(Math.floor(Math.random() *
+                this.allConstants.getSpecialChars().length));
         }
 
         scrambledPassword = upperCaseGenerator + lowerCaseGenerator + numericGenerator + characterGenerator;
 
         if (remainder !== 0) {
             for (let x = 0; x < remainder; x++) {
-                optionalCharacter += allConstants.getRandomString().charAt(Math.floor(Math.random() *
-                    allConstants.getRandomString().length));
+                optionalCharacter += this.allConstants.getRandomString().charAt(Math.floor(Math.random() *
+                    this.allConstants.getRandomString().length));
             }
             scrambledPassword = scrambledPassword.toString().concat(optionalCharacter);
-            return this.CompletePasswordGeneration(passwordLength, autoGeneratedPassword, scrambledPassword);
+            return this.completePasswordGeneration(passwordLength, autoGeneratedPassword, scrambledPassword);
         } else {
-            return this.CompletePasswordGeneration(passwordLength, autoGeneratedPassword, scrambledPassword);
+            return this.completePasswordGeneration(passwordLength, autoGeneratedPassword, scrambledPassword);
         }
-    },
-    CompletePasswordGeneration: (passwordLength: number, autoGeneratedPassword: any, scrambledPassword) => {
+    }
+
+    completePasswordGeneration(passwordLength: number, autoGeneratedPassword: any, scrambledPassword) {
         for (let b = 0; b < passwordLength; b++) {
             autoGeneratedPassword += scrambledPassword.charAt(Math.floor(Math.random() *
                 scrambledPassword.length));
         }
         return autoGeneratedPassword;
-    },
-    CreateStrongPassword: (codeLength) => {
-        if (codeLength.isNaN || codeLength <= 11 || codeLength >= 50) {
+    }
+
+    async createStrongPassword(codeLength: number) {
+        if (codeLength <= 11 || codeLength >= 50) {
             return "Invalid input";
         }
-        let createNewPassword = this.StrongPasswordGenerator(codeLength);
-        if (this.WeakPasswordChecker(createNewPassword, codeLength)) {
-            return createNewPassword;
-        } else {
-            createNewPassword = this.CreateStrongPassword(codeLength);
-        }
+        let createNewPassword = this.strongPasswordGenerator(codeLength);
+
+        await this.weakPasswordChecker(createNewPassword, codeLength).then((result) => {
+            if (result) {
+                return createNewPassword;
+            } else {
+                createNewPassword = this.createStrongPassword(codeLength);
+            }
+        })
         return createNewPassword;
-    },
-    ProductKeyGenerator: (productKeyLength) => {
+    }
+
+    productKeyGenerator(productKeyLength:number) {
         let generatedProductKey = "";
         let finalGeneratedProductKey = "";
         let modulusSum = 0;
-        if (!productKeyLength.isNaN && productKeyLength >= 16 && productKeyLength <= 100
+        if (productKeyLength >= 16 && productKeyLength <= 100
             && (productKeyLength % 4 === 0 || productKeyLength % 5 === 0)) {
             const upperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456890';
             for (let i = 0; i < productKeyLength; i++) {
@@ -169,5 +157,5 @@ module.exports = {
         }
         finalGeneratedProductKey = finalGeneratedProductKey.substring(0, finalGeneratedProductKey.length - 1);
         return finalGeneratedProductKey;
-    },
+    }
 }
