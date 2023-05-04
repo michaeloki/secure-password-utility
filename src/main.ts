@@ -1,10 +1,7 @@
 import {AppConstants} from "./constants";
-import {SecureFileReader} from "./utils/fileReader";
-import * as fs from "fs";
 
 export class SecurePasswordUtility {
     allConstants = new AppConstants();
-    fileReader = new SecureFileReader();
 
     async weakPasswordChecker(rawPassword: string, passwordLength: number) {
 
@@ -19,33 +16,17 @@ export class SecurePasswordUtility {
                     if (!(passwordLength === rawPassword.length && passwordLength >= 12)) {
                         status = false;
                     } else {
-                         //let result = this.fileReader.readFile(rawPassword.toString().toLowerCase())
-                        await fs.readFile('src/assets/passwds.json', function (err:any, data:any) {
-                            if (err) {
-                                return console.error(err);
-                            }
-                            const obj = JSON.parse(data.toString());
-                            for (const text in obj) {
-                                if (rawPassword.toLowerCase().includes(obj[text]) && obj[text].toString().toLowerCase().length >= 3) {
-                                    console.log(' i am here;;;weak  passwd')
-                                    //return true;
-                                    sessionStorage.setItem('passwordState','weak');
-                                    fileResult.add(true);
-
-                                    // console.log('tempState ', tempState);
-
-                                }
-                            }
-                            console.log('size is ', fileResult.size);
-
-
-                            let newTempState:boolean;
-                            try {
-                                console.log('TRYING TO CALLLLLL ', );
-                                //console.log('RESPONSE ', response);
-                                (fileResult.size>0) ? newTempState = false : newTempState = true;
-
-                                if (newTempState===true) {
+                        await fetch(this.allConstants.remotePassFile)
+                            .then((response) => response.json())
+                            .then(
+                                (json) => json.forEach(( word) => {
+                                            if (rawPassword.toLowerCase().includes(word) && word.toString().toLowerCase().length >= 3) {
+                                                fileResult.add(true);
+                                            }
+                                })
+                            );
+                                if (fileResult.size>0) {
+                                    console.log('since fileSize is more than oONE==== ', fileResult.size);
                                     const pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[-+_!@#$%^&*.,?]).+$/;
                                     if (!pattern.test(rawPassword)) {
                                         status = false;
@@ -53,22 +34,6 @@ export class SecurePasswordUtility {
                                         console.log('pass makeup is poor')
                                     }
                                 }
-
-                            } catch (e:any) {
-                                console.log('e is ', e);
-                            }
-
-
-                        });
-
-
-                        //})
-                            // .then((result) => {
-                            //     console.log('dictionary result ',result);
-                            //     (result == true) ? status = false : status = true;
-                            //     console.log('inside readFile status is ', status);
-                            // })
-
                     }
                 } catch (exception: any) {
                     console.log("SecurePasswordUtility::: ", exception.message);
@@ -76,14 +41,11 @@ export class SecurePasswordUtility {
             }
         } catch (exception: any) {
             console.log("SecurePasswordUtility::: ", exception.message);
-        } finally {
-            console.log('infinally SIZE  is==== ', fileResult.size)
         }
-        console.log('size is==== ', fileResult.size)
         if(fileResult.size>0) {
             status = false;
         }
-        return sessionStorage.getItem('passwordState');
+        return status
     }
 
     strongPasswordGenerator(passwordLength: any) {
@@ -159,15 +121,15 @@ export class SecurePasswordUtility {
         if (codeLength <= 11 || codeLength >= 50) {
             return "Invalid input";
         }
-        //let createNewPassword = this.strongPasswordGenerator(codeLength);
+        let createNewPassword = this.strongPasswordGenerator(codeLength);
 
-        // await this.weakPasswordChecker(createNewPassword, codeLength).then((result) => {
-        //     if (result) {
-        //         return createNewPassword;
-        //     } else {
-        //         createNewPassword = this.createStrongPassword(codeLength);
-        //     }
-        // })
+        await this.weakPasswordChecker(createNewPassword, codeLength).then((result) => {
+            if (!result) {
+                return createNewPassword;
+            } else {
+                createNewPassword = this.createStrongPassword(codeLength);
+            }
+        })
         return this.strongPasswordGenerator(codeLength);
     }
 

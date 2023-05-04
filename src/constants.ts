@@ -1,5 +1,7 @@
 export class AppConstants {
 
+    remotePassFile = 'https://mobilepushserver.com/passwds.json';
+
     getPasswordLength() {
         return 13
     }
@@ -34,9 +36,5 @@ export class AppConstants {
 
     getSpecialChars() {
         return '#$!@&%+=?';
-    }
-
-    getPasswordState() {
-        return true;
     }
 }

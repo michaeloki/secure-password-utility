@@ -15,22 +15,14 @@ const getTestVariables = new AppConstants();
 
 describe('Weak password checker', function () {
     it('return a boolean result', async () => {
-        let passwordState = '';
+        console.log('return true if strong and false if it\'s weak');
         // Ronaldo!@#41
         //k%&%N8Ey4$Yx$Fp$A8 -18
         let result =  securePasswordUtility.weakPasswordChecker('Ronaldo!@#41',12)
 
         result.then((response) => {
             console.log('resp is ',response)
-            // if(response) {
-            //     passwordState='true'
-            //     console.log('psss ', passwordState);
-            //     expect(passwordState, 'true')
-            // }
-            //expect(response, 'true' )
-            //assert.equal(response, true)
-            //passwordState = response
-
+            assert.isFalse(response);
         })
 
     } );
