@@ -26,7 +26,6 @@ export class SecurePasswordUtility {
                                 })
                             );
                                 if (fileResult.size>0) {
-                                    console.log('since fileSize is more than oONE==== ', fileResult.size);
                                     const pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[-+_!@#$%^&*.,?]).+$/;
                                     if (!pattern.test(rawPassword)) {
                                         status = false;
