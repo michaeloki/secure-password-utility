@@ -34,13 +34,6 @@ Import secure-password-utility
 const securePasswordUtility = require('secure-password-utility'); // Add this in your top-level class or file
 import {SecurePasswordUtility} from 'secure-password-utility'
 
-Add   
-   "files": [
-    "secure-password-utility/src/main.ts"
-  ]
-  
-  to your package.json file if your are using Angular/React
-
 ````
 
 ````
