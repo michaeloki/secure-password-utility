@@ -1,10 +1,6 @@
 import {assert, expect} from "chai";
-import {AppConstants} from "../src/constants";
-import {SecurePasswordUtility} from "../src/main";
-
-const securePasswordUtility = new SecurePasswordUtility();
-
-const getTestVariables = new AppConstants();
+const securePasswordUtility = require('./main')
+const getTestVariables = require('../src/constants')
 
 before(function () {
     expect(getTestVariables.getFirstProductKey() == 16).true
