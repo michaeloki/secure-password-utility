@@ -14,7 +14,8 @@ Once you display the conditions in your UI, this function will enforce the valid
 
 # Quick Setup
 Install the plugin using npm i secure-password-utility
-In your Node/Angular/React/Vue application:
+In your
+Node/Angular/React/Vue application:
 Install 'Types' plugin by running npm i -D @types/node
 Include
 `"types": [
