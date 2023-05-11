@@ -14,7 +14,7 @@ Once you display the conditions in your UI, this function will enforce the valid
 
 # Quick Setup
 Install the plugin using npm i secure-password-utility
-In your Angular/React/Vue application:
+In your Node/Angular/React/Vue application:
 Install 'Types' plugin by running npm i -D @types/node
 Include
 `"types": [
@@ -42,7 +42,7 @@ const securePasswordUtility = require('secure-password-utility'); // Add this in
 ````
 
 ````
-function SampleCall () {
+function SampleCall () async {
     let passwordStrength = false;
     await securePasswordUtility.weakPasswordChecker('k%&%N8Ey4$Yx$Fp$A8', 18)
         .then((response) => {
@@ -58,7 +58,7 @@ function SampleCall () {
 
 ````
 
-function SamplePasswordCreator () {     
+function SamplePasswordCreator () async {     
     let generatedPassword;
        await securePasswordUtility.createStrongPassword(16).then((response) => {
             generatedPassword = response;
