@@ -1,10 +1,6 @@
-//import {AppConstants} from "./constants";
 let allConstants = require('./constants');
 
 module.exports = {
-
-    //SecurePasswordUtility {
-    //allConstants = new AppConstants();
 
     async weakPasswordChecker(rawPassword: string, passwordLength: number) {
 
