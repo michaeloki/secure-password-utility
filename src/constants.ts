@@ -1,42 +1,46 @@
 module.exports =  {
 
-    getRemotePassFile() {
+    getErrorMessage: function () {
+        return 'Invalid input'
+    },
+
+    getRemotePassFile: function () {
         return 'https://mobilepushserver.com/passwds.json';
     },
 
-    getPasswordLength() {
+    getPasswordLength: function () {
         return 13
     },
 
-    getRawPassword() {
+    getRawPassword: function () {
         return "Turpen73tino!"
     },
 
-    getFirstProductKey() {
+    getFirstProductKey: function () {
         return 16;
     },
 
-    getSecondProductKey() {
+    getSecondProductKey: function () {
         return 20;
     },
 
-    getLowerCase() {
+    getLowerCase: function () {
         return 'abcdefghijklmnopqrstuvwxyz';
     },
 
-    getUpperCase() {
+    getUpperCase: function () {
         return 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     },
 
-    getRandomString() {
+    getRandomString: function () {
         return 'abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     },
 
-    getAllNumbers() {
+    getAllNumbers: function () {
         return '0123456789';
     },
 
-    getSpecialChars() {
+    getSpecialChars: function () {
         return '#$!@&%+=?';
     }
 }
