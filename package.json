@@ -1,7 +1,7 @@
 {
   "name": "secure-password-utility",
-  "version": "1.4.7",
-  "description": "This password utility encourages the use of strong passwords in front-end applications",
+  "version": "1.4.8",
+  "description": "This NodeJS-password utility encourages the use of strong passwords in front-end applications",
   "main": "src/main.ts",
   "scripts": {
     "test": "mocha -r ts-node/register tests/test.ts",
