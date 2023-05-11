@@ -1,13 +1,13 @@
 # secure-password-utility
-This password utility encourages the use of strong passwords in front-end applications.
+This NodeJS-password utility encourages the use of strong passwords in front-end applications.
 
 To install this package, run npm i secure-password-utility.
 
-When you call WeakPasswordChecker you will get a boolean value.
+When you call `weakPasswordChecker` you will get a boolean value.
 
 Weak passwords like password123 or common words will also return false.
 
-The WeakPasswordChecker function will validate your input by ensuring that the password length is more than 11.
+The `weakPasswordChecker` function will validate your input by ensuring that the password length is more than 11.
 It also confirms that the input contains a number and the combination of a special character,lowercase and uppercase.
 
 Once you display the conditions in your UI, this function will enforce the validation.
