@@ -1,6 +1,6 @@
 {
   "name": "secure-password-utility",
-  "version": "1.4.9",
+  "version": "1.5.0",
   "description": "This NodeJS-password utility encourages the use of strong passwords in front-end applications",
   "main": "src/main.ts",
   "scripts": {

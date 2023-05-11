@@ -5,7 +5,7 @@ To install this package, run npm i secure-password-utility.
 
 When you call `weakPasswordChecker` you will get a boolean value.
 
-Weak passwords like password123 or common words will also return false.
+Weak passwords like `Ronaldo!@#41` or common words will also return false.
 
 The `weakPasswordChecker` function will validate your input by ensuring that the password length is more than 11.
 It also confirms that the input contains a number and the combination of a special character,lowercase and uppercase.
@@ -16,24 +16,23 @@ Once you display the conditions in your UI, this function will enforce the valid
 Install the plugin using npm i secure-password-utility
 In your Angular/React/Vue application:
 Install 'Types' plugin by running npm i -D @types/node
-Add
-"types": [
+Include
+`"types": [
 "node"
-],
+],`in your tsconfig.json file and restart your IDE.
 
-in your tsconfig.json file and restart your IDE.
-Usage
+# Usage
 =====
 // Validate password strength
-Syntax: securePasswordUtility.WeakPasswordChecker('yourSamplePassword',lengthOfPasswordString);
+Syntax: securePasswordUtility.weakPasswordChecker('yourSamplePassword', lengthOfYourPassword);
 N.B. Ensure the length of the password you want to validate is at least 12-characters long.
 
 // Generate a strong password
-Syntax: securePasswordUtility.CreateStrongPassword(lengthOfPasswordString);
+Syntax: securePasswordUtility.createStrongPassword(lengthOfYourPassword);
 N.B. The password length must be more than 12.
 
 // Generate a product key
-Syntax: securePasswordUtility.CreateStrongPassword(lengthOfPasswordString);
+Syntax: securePasswordUtility.productKeyGenerator(lengthOfYourProductKey);
 N.B. The password length must be a multiple of 4 or 5 between 16 and 100 e.g. 16 or 25
 
 
