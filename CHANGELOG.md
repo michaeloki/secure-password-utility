@@ -4,3 +4,4 @@
 - Code optimisation
 - Minor bug fix
 - Added batch product key generation feature
+- Added one more unit test
