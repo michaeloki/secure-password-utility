@@ -171,12 +171,12 @@ module.exports = {
     },
 
     batchProductKeyGenerator(rawProductKeyLength, numberOfKeys) {
-        let batchKeyss = [];
+        let batchKeys = [];
         if(!rawProductKeyLength.isNaN && !numberOfKeys.isNaN) {
         for (let keyIndex = 0; keyIndex < numberOfKeys; keyIndex++) {
-            batchKeyss.push(this.productKeyGenerator(rawProductKeyLength));
+            batchKeys.push(this.productKeyGenerator(rawProductKeyLength));
         }
     }
-        return batchKeyss;
+        return batchKeys;
     }
 }
