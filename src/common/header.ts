@@ -1,5 +1,5 @@
-let allConstants = require('../constants');
-let utils = require('../utils/util');
+let allConstants = require('../constants.ts');
+let utils = require('../utils/util.ts');
 
 module.exports = {
     getAllConstants () {

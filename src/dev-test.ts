@@ -7,7 +7,7 @@ async function TestPasswordGenerator() {
     })
     // console.log('myPass is ', myPass)
     //console.log(' let us see this... ',passwordCheck.weakPasswordChecker("BABY48@#pJ",10));
-    //console.log(' let us see this...11 ',passwordCheck.productKeyGenerator(20));
+    console.log(' productKey is ',passwordCheck.productKeyGenerator(25));
 }
 
-// TestPasswordGenerator();
+ TestPasswordGenerator();
