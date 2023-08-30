@@ -70,7 +70,7 @@ function SamplePasswordCreator () async {
 
 ````
 
-function SampleproductKeyCreator () {
+function SampleProductKeyCreator () {
      const generatedPassword = securePasswordUtility.productKeyGenerator(24);
      console.log("Your product key is ", generatedPassword);
 }
