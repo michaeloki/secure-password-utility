@@ -47,3 +47,10 @@ describe('Generate a product key', function () {
         expect(securePasswordUtility.productKeyGenerator(20)).length(23);
     });
 });
+
+describe('Generate a batch of product keys', function () {
+    it('compare', function () {
+        let productKeys = securePasswordUtility.batchProductKeyGenerator(25, 50);
+        expect(securePasswordUtility.batchProductKeyGenerator(25, 50)).length(50);
+    });
+});

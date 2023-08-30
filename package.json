@@ -1,6 +1,6 @@
 {
   "name": "secure-password-utility",
-  "version": "1.5.3",
+  "version": "1.5.4",
   "description": "This NodeJS-password utility encourages the use of strong passwords in front-end applications. You can also generate product keys using this plugin.",
   "main": "src/main.ts",
   "scripts": {
@@ -18,7 +18,8 @@
     "generator",
     "secure password",
     "product key maker",
-    "product key generator"
+    "product key generator",
+    "license key generator"
   ],
   "author": "Michael Oki @inspiratiX Hub",
   "blog": "https://michaeloki.blogspot.com",

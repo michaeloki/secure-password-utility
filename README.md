@@ -70,8 +70,16 @@ function SamplePasswordCreator () async {
 
 ````
 
-function SampleProductKeyCreator () {
+function SampleProductKeyGenerator () {
      const generatedPassword = securePasswordUtility.productKeyGenerator(24);
+     console.log("Your product key is ", generatedPassword);
+}
+````
+
+````
+
+function BatchProductKeyGenerator () {
+     const generatedPassword = securePasswordUtility.batchProductKeyGenerator(25, 100);
      console.log("Your product key is ", generatedPassword);
 }
 ````
