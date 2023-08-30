@@ -168,5 +168,15 @@ module.exports = {
         }
         finalGeneratedProductKey = finalGeneratedProductKey.substring(0, finalGeneratedProductKey.length - 1);
         return finalGeneratedProductKey;
+    },
+
+    batchProductKeyGenerator(rawProductKeyLength, numberOfKeys) {
+        let batchKeyss = [];
+        if(!rawProductKeyLength.isNaN && !numberOfKeys.isNaN) {
+        for (let keyIndex = 0; keyIndex < numberOfKeys; keyIndex++) {
+            batchKeyss.push(this.productKeyGenerator(rawProductKeyLength));
+        }
+    }
+        return batchKeyss;
     }
 }
