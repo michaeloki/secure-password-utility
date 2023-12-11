@@ -1,4 +1,4 @@
-## 1.5.5
+## 1.5.6
 
 - Updated the README file
 - Code optimisation

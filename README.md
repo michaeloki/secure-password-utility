@@ -23,16 +23,15 @@ Include
 ],`in your tsconfig.json file and restart your IDE.
 
 # Usage
-=====
-// Validate password strength
+*Validate password strength
 Syntax: securePasswordUtility.weakPasswordChecker('yourSamplePassword', lengthOfYourPassword);
 N.B. Ensure the length of the password you want to validate is at least 12-characters long.
 
-// Generate a strong password
+*Generate a strong password
 Syntax: securePasswordUtility.createStrongPassword(lengthOfYourPassword);
 N.B. The password length must be more than 12.
 
-// Generate a product key
+*Generate a product key
 Syntax: securePasswordUtility.productKeyGenerator(lengthOfYourProductKey);
 N.B. The password length must be a multiple of 4 or 5 between 16 and 100 e.g. 16 or 25
 
