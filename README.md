@@ -5,7 +5,7 @@ To install this package, run npm i secure-password-utility.
 
 When you call `weakPasswordChecker` you will get a boolean value.
 
-Weak passwords like `Ronaldo!@#41` or common words will also return false.
+Weak passwords like `Passkey!@#41` or common words will also return false.
 
 The `weakPasswordChecker` function will validate your input by ensuring that the password length is more than 11.
 It also confirms that the input contains a number and the combination of a special character,lowercase and uppercase.
@@ -13,7 +13,7 @@ It also confirms that the input contains a number and the combination of a speci
 Once you display the conditions in your UI, this function will enforce the validation.
 
 # Quick Setup
-Install the plugin using npm i secure-password-utility
+Install the plugin using `npm i secure-password-utility`
 In your
 Node/Angular/React/Vue application:
 Install 'Types' plugin by running npm i -D @types/node
