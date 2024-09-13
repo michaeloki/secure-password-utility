@@ -85,4 +85,4 @@ function BatchProductKeyGenerator () {
 
 
 Buy me a  ☕
-https://paypal.me/inspirati
+https://www.paypal.com/paypalme/inspirati
