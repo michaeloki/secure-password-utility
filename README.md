@@ -42,7 +42,7 @@ const securePasswordUtility = require('secure-password-utility'); // Add this in
 ````
 
 ````
-function SampleCall () async {
+async function SampleCall () {
     let passwordStrength = false;
     await securePasswordUtility.weakPasswordChecker('k%&%N8Ey4$Yx$Fp$A8', 18)
         .then((response) => {
@@ -58,7 +58,7 @@ function SampleCall () async {
 
 ````
 
-function SamplePasswordCreator () async {     
+async function SamplePasswordCreator () {     
     let generatedPassword;
        await securePasswordUtility.createStrongPassword(16).then((response) => {
             generatedPassword = response;
