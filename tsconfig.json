@@ -5,6 +5,11 @@
     "lib": [
       "ES2020"
     ],
+    "types": [
+      "jest",
+      "mocha",
+      "node"
+    ],
     "rootDir": "src",
     "outDir": "dist",
     "declaration": true,
@@ -21,5 +26,5 @@
     "node_modules",
     "dist",
     "tests"
-  ]
+  ],
 }

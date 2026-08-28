@@ -46,7 +46,8 @@
   "homepage": "https://github.com/michaeloki/secure-password-utility#readme",
   "devDependencies": {
     "@types/chai": "^4.3.0",
-    "@types/mocha": "^9.1.0",
+    "@types/jest": "^30.0.0",
+    "@types/mocha": "^9.1.1",
     "@types/node": "^17.0.45",
     "chai": "^4.3.6",
     "mocha": "10.8.2",
