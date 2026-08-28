@@ -9,8 +9,15 @@ Weak passwords like `Passkey!@#41` or common words will also return false.
 
 The `weakPasswordChecker` function will validate your input by ensuring that the password length is more than 11.
 It also confirms that the input contains a number and the combination of a special character,lowercase and uppercase.
+Finally, it rejects passwords containing known common words or fragments using a bundled wordlist (no network access required).
+You can extend the check with your own words by passing them as an optional third argument:
+`weakPasswordChecker(password, length, ['mycompany', 'projectx'])`.
 
 Once you display the conditions in your UI, this function will enforce the validation.
+
+Generator functions (`strongPasswordGenerator`, `createStrongPassword`, `productKeyGenerator`,
+`batchProductKeyGenerator`) use cryptographically secure randomness and throw an
+`InvalidInputError` for unsupported arguments instead of returning `"Invalid input"` strings.
 
 # Quick Setup
 Install the plugin using `npm i secure-password-utility`
@@ -21,6 +28,11 @@ Include
 `"types": [
 "node"
 ],`in your tsconfig.json file and restart your IDE.
+
+# Development
+- `npm run build` compiles `src/` to `dist/` (the published entry point).
+- `npm test` runs the unit test suite (fully offline, no network required).
+- `npm run coverage` produces an lcov coverage report.
 
 # Usage
 *Validate password strength

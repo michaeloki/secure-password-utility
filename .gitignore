@@ -15,6 +15,7 @@ chrome-profiler-events*.json
 
 # IDEs and editors
 /.idea
+/.nyc_output
 .project
 .classpath
 .c9/

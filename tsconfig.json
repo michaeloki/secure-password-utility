@@ -1,14 +1,30 @@
 {
   "compilerOptions": {
-    "target": "es2017",
-    "module": "commonJS",
+    "target": "ES2019",
+    "module": "CommonJS",
     "lib": [
-      "es2018",
-      "dom"
+      "ES2020"
     ],
+    "types": [
+      "jest",
+      "mocha",
+      "node"
+    ],
+    "rootDir": "src",
+    "outDir": "dist",
+    "declaration": true,
     "sourceMap": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true
   },
+  "include": [
+    "src"
+  ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "dist",
+    "tests"
   ],
 }
