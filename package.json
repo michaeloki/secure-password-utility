@@ -1,11 +1,26 @@
 {
   "name": "secure-password-utility",
-  "version": "1.5.9",
+  "version": "1.6.0",
   "description": "This NodeJS-password utility encourages the use of strong passwords in front-end applications. You can also generate product keys using this plugin.",
-  "main": "src/main.ts",
+  "main": "dist/main.js",
+  "types": "dist/main.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/main.d.ts",
+      "default": "./dist/main.js"
+    }
+  },
+  "engines": {
+    "node": ">=16"
+  },
   "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepare": "npm run build",
     "test": "mocha -r ts-node/register tests/test.ts",
-    "coverage": "nyc -r lcov -e .ts -x \"*.test.ts\" npm run test"
+    "coverage": "nyc -r lcov -e .ts npm run test"
   },
   "repository": {
     "type": "git",
@@ -38,8 +53,5 @@
     "nyc": "^15.1.0",
     "ts-node": "^10.5.0",
     "typescript": "^4.5.5"
-  },
-  "dependencies": {
-    "rxjs": "^7.8.1"
   }
 }

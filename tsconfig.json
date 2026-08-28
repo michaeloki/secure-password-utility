@@ -1,14 +1,25 @@
 {
   "compilerOptions": {
-    "target": "es2017",
-    "module": "commonJS",
+    "target": "ES2019",
+    "module": "CommonJS",
     "lib": [
-      "es2018",
-      "dom"
+      "ES2020"
     ],
+    "rootDir": "src",
+    "outDir": "dist",
+    "declaration": true,
     "sourceMap": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true
   },
-  "exclude": [
-    "node_modules"
+  "include": [
+    "src"
   ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "tests"
+  ]
 }
